@@ -14,4 +14,13 @@ class ExercisesTest {
   void nextPerfectSquare(long input, long expected) {
     assertEquals(expected, Exercises.nextPerfectSquare(input));
   }
+
+  @DisplayName("greatestCommonDivisor")
+  @ParameterizedTest(name = "[{index}] Asserting greatestCommonDivisor({0}, {1}) == {2}.")
+  @CsvFileSource(resources = "greatest-common-divisor.csv", numLinesToSkip = 1)
+  void nextPerfectSquare(long a, long b, long expected) {
+    assertEquals(expected, Exercises.greatestCommonDivisor(a, b));
+  }
+
+
 }
