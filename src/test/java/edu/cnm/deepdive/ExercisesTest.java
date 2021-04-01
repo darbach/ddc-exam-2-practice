@@ -49,7 +49,7 @@ class ExercisesTest {
   }
 
   @DisplayName("parseSSN")
-  @ParameterizedTest(name = "[{index}] Asserting parseSSN([{0}]) == {1}.")
+  @ParameterizedTest(name = "[{index}] Asserting parseSSN(\"{0}\") == {1}.")
   @CsvFileSource(resources = "parse-ssn.csv", numLinesToSkip = 1)
   void parseSSN(String input, String expected) {
     assertEquals(expected, Arrays.toString(Exercises.parseSSN(input)));
