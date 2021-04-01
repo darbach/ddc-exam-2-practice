@@ -2,7 +2,9 @@ package edu.cnm.deepdive;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -22,5 +24,15 @@ class ExercisesTest {
     assertEquals(expected, Exercises.greatestCommonDivisor(a, b));
   }
 
-
+  @DisplayName("sliceArray")
+  @ParameterizedTest(name = "[{index}] Asserting sliceArray([{0}], {1}, {2}, {3}) == {4}.")
+  @CsvFileSource(resources = "slice-array.csv", numLinesToSkip = 1)
+  void sliceArray(String input, int beginIndex, int endIndex, int stride, String expected) {
+    int[] inputArr = Arrays.stream(input.split("\\s+"))
+        .map(Integer::parseInt)
+        .mapToInt(i -> i)
+        .toArray();
+    String actual = Arrays.toString(Exercises.sliceArray(inputArr, beginIndex, endIndex, stride));
+    assertEquals(expected, actual);
+  }
 }

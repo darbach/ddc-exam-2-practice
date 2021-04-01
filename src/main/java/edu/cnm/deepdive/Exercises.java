@@ -65,4 +65,28 @@ public class Exercises {
     }
   }
 
+  /**
+   * Given an int[], return a specified slice of the array. Rather than a simple sub-array, a slice
+   * contains the elements starting from beginIndex, up to (but not including) endIndex, skipping
+   * elements according to a step or stride parameter value (stride).
+   *
+   * For example, a slice of {1, 1, 2, 3, 5, 8, 13, 21, 34, 55}, with a beginIndex value of 1, an
+   * endIndex of 9, and a stride of 2, would return {1, 3, 8, 21}—that is, the array containing the
+   * elements from the original array starting at position 1, advancing by 2 positions in each step
+   * (thus, including values from positions 1, 3, 5, etc. of the original), including each such
+   * value up to, but not including the element in position 9.
+   *
+   * @param input an array of ints
+   * @param beginIndex the starting index
+   * @param endIndex the ending index (non-inclusive)
+   * @param stride number of elements to skip
+   * @return an array from input from beginIndex to endIndex, skipping to each stride element
+   */
+  public static int[] sliceArray(int[] input, int beginIndex, int endIndex, int stride) {
+    int[] result = new int[(endIndex - beginIndex) / stride];
+    for (int i = 0, j = beginIndex; j < endIndex; i++, j += stride) {
+      result[i] = input[j];
+    }
+    return result;
+  }
 }
