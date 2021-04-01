@@ -1,7 +1,7 @@
 package edu.cnm.deepdive;
 
 import java.math.BigInteger;
-import jdk.jshell.spi.ExecutionControl.NotImplementedException;
+import java.util.Arrays;
 
 public class Exercises {
 
@@ -88,5 +88,18 @@ public class Exercises {
       result[i] = input[j];
     }
     return result;
+  }
+
+
+  public static String formatSSN(int[] ssn) {
+    return String.format("%03d-%03d-%04d", ssn[0], ssn[1], ssn[2]);
+  }
+
+  public static int[] parseSSN(String ssn) {
+   int[] result = Arrays.stream(ssn.split("-"))
+        .map(Integer::parseInt)
+        .mapToInt((i) -> i)
+        .toArray();
+   return result;
   }
 }

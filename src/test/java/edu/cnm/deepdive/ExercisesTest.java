@@ -35,4 +35,23 @@ class ExercisesTest {
     String actual = Arrays.toString(Exercises.sliceArray(inputArr, beginIndex, endIndex, stride));
     assertEquals(expected, actual);
   }
+
+  @DisplayName("formatSSN")
+  @ParameterizedTest(name = "[{index}] Asserting formatSSN([{0}]) == {1}.")
+  @CsvFileSource(resources = "format-ssn.csv", numLinesToSkip = 1)
+  void formatSSN(String input, String expected) {
+    int[] inputArr = Arrays.stream(input.split("\\s+"))
+        .map(Integer::parseInt)
+        .mapToInt(i -> i)
+        .toArray();
+    String actual = Exercises.formatSSN(inputArr);
+    assertEquals(expected, actual);
+  }
+
+  @DisplayName("parseSSN")
+  @ParameterizedTest(name = "[{index}] Asserting parseSSN([{0}]) == {1}.")
+  @CsvFileSource(resources = "parse-ssn.csv", numLinesToSkip = 1)
+  void parseSSN(String input, String expected) {
+    assertEquals(expected, Arrays.toString(Exercises.parseSSN(input)));
+  }
 }
