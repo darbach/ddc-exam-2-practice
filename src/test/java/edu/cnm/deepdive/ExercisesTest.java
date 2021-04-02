@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -20,9 +19,24 @@ class ExercisesTest {
   @DisplayName("greatestCommonDivisor")
   @ParameterizedTest(name = "[{index}] Asserting greatestCommonDivisor({0}, {1}) == {2}.")
   @CsvFileSource(resources = "greatest-common-divisor.csv", numLinesToSkip = 1)
-  void nextPerfectSquare(long a, long b, long expected) {
+  void greatestCommonDivisor(long a, long b, long expected) {
     assertEquals(expected, Exercises.greatestCommonDivisor(a, b));
   }
+
+  @DisplayName("minuteHandRadians")
+  @ParameterizedTest(name = "[{index}] Asserting minuteHandRadians({0}) == {1}.")
+  @CsvFileSource(resources = "minute-hand-radians.csv", numLinesToSkip = 1)
+  void minuteHandRadians(int minutes, float expected) {
+    assertEquals(expected, Exercises.minuteHandRadians(minutes), 3);
+  }
+
+  @DisplayName("hourHandRadians")
+  @ParameterizedTest(name = "[{index}] Asserting hourHandRadians({0}, {1}) == {2}.")
+  @CsvFileSource(resources = "hour-hand-radians.csv", numLinesToSkip = 1)
+  void hourHandRadians(int hours, float minutes, float expected) {
+    assertEquals(expected, Exercises.hourHandRadians(hours, minutes), 3);
+  }
+
 
   @DisplayName("sliceArray")
   @ParameterizedTest(name = "[{index}] Asserting sliceArray([{0}], {1}, {2}, {3}) == {4}.")
